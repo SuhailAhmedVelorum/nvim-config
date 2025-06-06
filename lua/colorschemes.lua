@@ -33,7 +33,6 @@ M.colorscheme_conf = {
     vim.g.gruvbox_material_background = "hard"
     vim.g.gruvbox_material_enable_italic = 1
     vim.g.gruvbox_material_better_performance = 1
-
     vim.cmd([[colorscheme gruvbox-material]])
   end,
   everforest = function()
@@ -92,12 +91,15 @@ M.colorscheme_conf = {
   citruszest = function()
     vim.cmd([[colorscheme citruszest]])
   end,
+  ron = function()
+    vim.cmd("colorscheme ron")
+  end,
 }
 
 --- Use a random colorscheme from the pre-defined list of colorschemes.
 M.rand_colorscheme = function()
-  local colorscheme = utils.rand_element(vim.tbl_keys(M.colorscheme_conf))
-
+  -- local colorscheme = utils.rand_element(vim.tbl_keys(M.colorscheme_conf))
+  local colorscheme = 'ron'
   -- Load the colorscheme and its settings
   M.colorscheme_conf[colorscheme]()
 end
