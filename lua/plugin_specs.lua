@@ -23,7 +23,6 @@ end
 local plugin_specs = {
   {
     "neovim/nvim-lspconfig",
-    event = { "BufRead", "BufNewFile" },
     config = function()
       require("config.lsp")
     end,
@@ -318,6 +317,16 @@ local plugin_specs = {
       require("config.fugitive")
     end,
   },
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- required
+      "sindrets/diffview.nvim", -- optional - Diff integration
+      -- Only one of these is needed.
+      "ibhagwan/fzf-lua", -- optional
+    },
+    event = "User InGitRepo",
+  },
 
   -- Better git log display
   { "rbong/vim-flog", cmd = { "Flog" } },
@@ -541,7 +550,7 @@ local plugin_specs = {
     "smjonas/live-command.nvim",
     -- live-command supports semantic versioning via Git tags
     -- tag = "2.*",
-    cmd = "Preview",
+    event = "VeryLazy",
     config = function()
       require("config.live-command")
     end,
